@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block content %}
+
+<div id="projects-container">
+  {% for project in projects %}
+  <div class="project-card">
+    <!-- left side project image banner -->
+    <div
+      class="project-card-img"
+      style="
+        background-image: url('{{project.background.url}}');"
+    ></div>
+    <!-- right side project discription container -->
+    <div class="project-card-info">
+      <!-- project title -->
+      <h2 class="project-card-title">{{project.pk}} {{project.title}}</h2>
+      <!-- project discription -->
+      <div class="project-card-disc">{{project.metaContent}}</div>
+      <!-- project action buttons -->
+      <div class="project-action-buttons">
+        <!-- github button -->
+        <a
+          href="{{project.github}}" target="_blank"
+          class="project-action-button"
+        >
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-512/free-github-163-761603.png?f=webp&w=256"
+            alt="github"
+          />
+        </a>
+        <!-- card link button -->
+        <!-- /project/{{project.pk}} -->
+        <!-- {% url 'project-ML001' %} -->
+        <!-- for creating link for specific ml project page -->
+        <a href="/project/{{project.pk}}" class="project-action-button">
+          <img
+            src="https://www.svgrepo.com/show/520912/right-arrow.svg"
+            alt="card link"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- project card end -->
+  {% endfor %}
+</div>
+
+<!-- project paginations section includes button for first, 2nd, 3rd, ...., last button -->
+<div class="main-buttons-cont" id="pagination-cont">
+  {% if is_paginated %} 
+    {% if page_obj.has_previous and page_obj.number != 2 %}
+      <a href="?page=1" class="main-buttons">First</a>
+    {% endif %} 
+    {% for num in page_obj.paginator.page_range %} 
+      {% if page_obj.number == num %}
+        <a href="?page={{num}}" class="main-buttons current">{{ num }}</a>
+
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        {% if page_obj.number == 2 or num != 1 %}
+          {% if page_obj.number == page_obj.paginator.num_pages|add:'-1' or num != page_obj.paginator.num_pages %}
+          <a href="?page={{num}}" class="main-buttons">{{ num }}</a>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %} 
+    
+    {% if page_obj.has_next and page_obj.number != page_obj.paginator.num_pages|add:'-1' %}
+      <a href="?page={{page_obj.num_pages}}" class="main-buttons">Last</a>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% endblock %}

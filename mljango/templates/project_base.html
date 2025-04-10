@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS link -->
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- title -->
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!-- header menu -->
+    <header>
+      <!-- big screen header which includes in icon of ham menu button -->
+      <div id="nav">
+        <!-- first section include portfolio(onclick return to top), dark theme button, search bar.  -->
+        <div id="nav-left">
+          <!-- logo container -->
+          <div class="nav-logo-cont">
+            <img src="{% static 'images/profile.png' %}" alt="logo" class="logo-icon" />
+          </div>
+          <!-- logo-name container -->
+          <!-- name of site -->
+          <a href="#">
+            <span id="nav-name">PortfolioHub</span>
+          </a>
+          <!-- day night theme -->
+          <div class="nav-logo-cont" id="theme-icon-cont">
+            <img src="{% static 'images/dark.png' %}" alt="D/N logo" class="logo-icon" id="logoicon" onclick="darkmode()" />
+          </div>
+        </div>
+        <!-- second section contain link for about, project and login -->
+        <div id="nav-right">
+          <!-- list of links -->
+          <ul id="nav-links">
+            <li class="nav-link-wrapper">
+              <a href="/" class="nav-link"> Home </a>
+            </li>
+            <li class="nav-link-wrapper">
+              {% if messages %}
+                <a href="#project-form-submit" class="nav-link"> Project </a>
+              {% else %}
+                <a href="#project_area" class="nav-link"> Project </a>
+              {% endif %}
+            </li>
+          </ul>
+          <!-- dropdown menu button -->
+          <div id="nav-dropdown-cont">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/79e75114856ae61628d2ad26504e3ff4ab2c71b6/f06a4/assets/svg/ham-menu.svg"
+              alt="dropdown menu"
+              class="nav-dropdown"
+            />
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/de2a681c8ca1630b29949b3a34bf158a686a0554/6a0ec/assets/svg/ham-menu-close.svg"
+              alt="dropdown menu close"
+              class="nav-dropdown-close d-none"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- mobile screen header which contains about, project buttons -->
+      <div class="dropdown-nav">
+        <!-- container for dropdown menu -->
+        <div id="nav-dropdown-mobile-cont">
+          <ul id="nav-dropdown-links">
+            <li class="nav-dropdown-link">
+              <a href="/">Home</a>
+            </li>
+            <li class="nav-dropdown-link">
+              <!-- <a href="/project/{{project.pk}}#contact">Project</a> -->
+              {% if messages %}
+                <a href="#project-form-submit">Project</a>
+              {% else %}
+                <a href="#project_area">Project</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- profile image, sort about me, link to side, project button section -->
+    <section id="hero-home">
+      <!-- main container which contains big picture, name, sort discription, button for project seciton  -->
+      <div id="hero-home-cont">
+        <!-- profile picture container -->
+        <div id="hero-home-profile-cont" style="width: 0; height: 0">
+          <!-- profile picture -->
+        </div>
+        <!-- name in h1 tag -->
+        <h1 id="hero-home-main-heading">{{project.pk}} {{project.title}}</h1>
+        <!-- sort discription paragraph inside a div -->
+        <div id="hero-home-disc-cont">
+          <p id="hero-main-paragraph">
+            {{project.content}}
+          </p>
+        </div>
+        <!-- div containing button for project section -->
+        <div class="main-buttons-cont">
+          {% if messages %}
+            <a href="#project-form-submit" class="main-buttons" id="main-big-button"> Project </a>
+          {% else %}
+            <a href="#project_area" class="main-buttons" id="main-big-button">Project</a>
+          {% endif %}
+        </div>
+      </div>
+      <!-- static left side div contains links in buttons form -->
+      <div id="hero-socials-cont">
+        <!-- social button linkedin -->
+        <div class="hero-social-icon-cont">
+          <a
+            href="https://linkedin.com/in/aaravharithas"
+            class="hero-social-icon-link"
+            target="_blank"
+          >
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/d8e6e1e636531e28274a1b8b6d947b817f6145bd/d42d3/assets/svg/linkedin-dark.svg"
+              alt="linkedin"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+        <!-- social button Github -->
+        <div class="hero-social-icon-cont">
+          <a
+            href="https://github.com/aaravharithas"
+            class="hero-social-icon-link"
+            target="_blank"
+          >
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/38469cf88d038b6ba3322c9fcb93a8f7167df4b9/cb0b9/assets/svg/github-dark.svg"
+              alt="Github"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+        <!-- social button twitter -->
+        <div class="hero-social-icon-cont">
+          <a
+            href="https://x.com/aarvharithas"
+            class="hero-social-icon-link"
+            target="_blank"
+          >
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/ba3ef9fd9d500c55ba265adae6087ba71e05f5d9/d0067/assets/svg/twitter-dark.svg"
+              alt="twitter"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+      </div>
+      <!-- scroll bar animation -->
+      <div id="hero-mouse-scroll-cont">
+        <div id="mouse"></div>
+      </div>
+    </section>
+    <!-- contact me seciton -->
+    <section class="section-container" id="project_area">
+      <div class="main-container">
+        <!-- first section contains small discriptions same as about me -->
+        <div class="sec-title-box">
+          <h2 class="title-sec-h2">
+            <span class="title-main-title">Project</span>
+            <span class="title-main-disc">
+              {{project.metaContent}}
+            </span>
+          </h2>
+        </div>
+        
+        <!-- form -->
+        {% block content %}
+        
+        {% endblock %}
+        <!-- form ends here -->
+
+      </div>
+    </section>
+    <!-- footer with sort about me(same as above in seciton 1) and socail media links -->
+    <footer id="main-footer">
+      <!-- main container -->
+      <div class="main-container">
+        <!-- div container in two secitons 1st contains main content in two sections: left data, right links -->
+        <div id="footer-upper">
+          <!-- left data section -->
+          <div class="footer-upper-row" id="footer-upper-row-1">
+            <h2 class="footer-title-sec">Gaurav Sharma</h2>
+            <p id="footer-upper-sort-disc">
+              A Python Dev and AIML enthusiast attempting to build a profession in the tech field of Artificial Intelligence and Machine Learning which will lead to my career advancement.
+            </p>
+          </div>
+          <!-- right link section -->
+          <div class="footer-upper-row" id="footer-upper-row-2">
+            <!-- heading for socail buttons -->
+            <h2 class="footer-title-sec" id="footer-upper-social-h2">
+              <span>Social</span>
+            </h2>
+            <!-- social icons -->
+            <div id="footer-upper-social-cont">
+              <!-- linkedin -->
+              <a href="https://linkedin.com/in/aaravharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png"
+                  alt="linkedin"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+              <!-- github -->
+              <a href="https://github.com/aaravharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png"
+                  alt="Github"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+              <!-- twitter -->
+              <a href="https://x.com/aarvharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/ef67339f7016cb09ba66366c1dc9145ac69f2a21/feca1/assets/png/twitter-ico.png"
+                  alt="Twitter"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- 2nd contains data like shoutout or website since this time to that time -->
+        <div id="footer-lower">
+          &copy; Copyright
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          . Made by <strong>Gaurav Sharma</strong> based on <strong>Django</strong>
+        </div>
+      </div>
+    </footer>
+    <!-- scripts for JS -->
+    <script src="{% static 'index.js'%}"></script>
+    <!-- script for theme change -->
+  <script>
+    function darkmode(){
+      var SetTheme = document.body;
+      SetTheme.classList.toggle("theme-change");
+      
+      let theme;
+      
+      if(SetTheme.classList.contains("theme-change")){
+        console.log("Dark Mode");
+        theme = "DARK";
+        logoicon.src = "{% static 'images/light.png' %}";
+      }else{
+        console.log("Light Mode");
+        theme = "LIGHT";
+        logoicon.src = "{% static 'images/dark.png' %}";
+      }
+
+      localStorage.setItem("PageTheme", JSON.stringify(theme));
+    }
+    
+    
+    let GetTheme = JSON.parse(localStorage.getItem("PageTheme"));
+    console.log(GetTheme);
+
+    if(GetTheme === "DARK"){
+      document.body.classList = "theme-change";
+      logoicon.src = "{% static 'images/light.png' %}";
+    }
+  </script>
+  </body>
+</html>

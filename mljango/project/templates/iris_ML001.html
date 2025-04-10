@@ -1,0 +1,153 @@
+{% extends 'project_base.html' %} {% block content %}
+<div class="contact-form-cont project-form-cont">
+  <form action="" id="form-child" method="post">
+    {% csrf_token %}
+    <div id="all-input-container">
+      <!-- number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Sepal Length</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="sepal_length"
+            step="0.01"
+            value="4.9"
+            oninput="this.form.sepal_length_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="0"
+            max="10"
+            step="0.01"
+            name="sepal_width_range"
+            value="4.9"
+            oninput="this.form.sepal_length.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- number input field end -->
+      <!-- number input field with range -->
+      <div class="input-field-container">
+        <!-- another field -->
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Sepal Width</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            step="0.01"
+            value="3.0"
+            name="sepal_width"
+            oninput="this.form.sepal_width_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="0"
+            max="5"
+            step="0.01"
+            name="sepal_width_range"
+            value="3.0"
+            oninput="this.form.sepal_width.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- number input field end -->
+      <!-- number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Petal Length</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="petal_length"
+            step="0.01"
+            value="1.4"
+            oninput="this.form.petal_length_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="0"
+            max="10"
+            step="0.01"
+            name="sepal_width_range"
+            value="1.4"
+            oninput="this.form.petal_length.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- number input field end -->
+      <!-- number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Petal Width</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="petal_width"
+            step="0.01"
+            value="0.2"
+            oninput="this.form.petal_width_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="0"
+            max="5"
+            step="0.01"
+            name="sepal_width_range"
+            value="0.2"
+            oninput="this.form.petal_width.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+    </div>
+    <!-- submit button -->
+    <div class="main-buttons-cont" id="project-form-submit">
+      <input class="main-buttons project-form-button" type="submit" />
+      <input class="main-buttons project-form-button" type="reset" />
+    </div>
+    <!-- submit button end -->
+  </form>
+  <!-- result -->
+  {% if messages %}
+  <div id="project-form-result">
+    <div class="contact-form-label">Result</div>
+    <div class="contact-form-value" id="form-result-message">
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <!-- result end -->
+  </div>
+</div>
+{% endblock %}

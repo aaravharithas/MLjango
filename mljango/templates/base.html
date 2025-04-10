@@ -1,0 +1,421 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS link -->
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- title -->
+     {% if title %}
+     <title>{{ title }}</title>
+     {% else %}
+    <title>PortfolioHub</title>
+    {% endif %}
+  </head>
+  <body>
+    <!-- header menu -->
+    <header>
+      <!-- big screen header which includes in icon of ham menu button -->
+      <div id="nav">
+        <!-- first section include portfolio(onclick return to top), dark theme button, search bar.  -->
+        <div id="nav-left">
+          <!-- logo container -->
+          <div class="nav-logo-cont">
+            <img src="{% static 'images/profile.png' %}" alt="logo" class="logo-icon" />
+          </div>
+          <!-- logo-name container -->
+          <!-- name of site -->
+           <a href="#">
+          <span id="nav-name">PortfolioHub</span>
+        </a>
+          <!-- day night theme -->
+          <div class="nav-logo-cont" id="theme-icon-cont">
+            <img src="{% static 'images/dark.png' %}" alt="D/N logo" class="logo-icon" id="logoicon" onclick="darkmode()"/>
+          </div>
+        </div>
+        <!-- second section contain link for about, project and login -->
+        <div id="nav-right">
+          <!-- list of links -->
+          <ul id="nav-links">
+            <li class="nav-link-wrapper">
+              {% if is_paginated %}
+              <a href="?page={{page_obj.number}}#" class="nav-link"> Top </a>
+              {% else %}
+              <a href="#" class="nav-link"> Top </a>
+              {% endif %}
+            </li>
+            <li class="nav-link-wrapper">
+              {% if is_paginated %}
+              <a href="?page={{page_obj.number}}#projects" class="nav-link"> Projects </a>
+              {% else %}
+              <a href="#projects" class="nav-link"> Projects </a>
+              {% endif %}
+            </li>
+          </ul>
+          <!-- dropdown menu button -->
+          <div id="nav-dropdown-cont">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/79e75114856ae61628d2ad26504e3ff4ab2c71b6/f06a4/assets/svg/ham-menu.svg"
+              alt="dropdown menu"
+              class="nav-dropdown"
+            />
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/de2a681c8ca1630b29949b3a34bf158a686a0554/6a0ec/assets/svg/ham-menu-close.svg"
+              alt="dropdown menu close"
+              class="nav-dropdown-close d-none"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- mobile screen header which contains about, project buttons -->
+      <div class="dropdown-nav">
+        <!-- container for dropdown menu -->
+        <div id="nav-dropdown-mobile-cont">
+          <ul id="nav-dropdown-links">
+            <li class="nav-dropdown-link">
+              {% if is_paginated %}
+              <a href="?page={{page_obj.number}}#">Top</a>
+              {% else %}
+              <a href="#">Top</a>
+              {% endif %}
+            </li>
+            <li class="nav-dropdown-link">
+              {% if is_paginated %}
+              <a href="?page={{page_obj.number}}#projects">Projects</a>
+              {% else %}
+              <a href="#projects">Projects</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- profile image, sort about me, link to side, project button section -->
+    <section id="hero-home">
+      <!-- main container which contains big picture, name, sort discription, button for project seciton  -->
+      <div id="hero-home-cont">
+        <!-- profile picture container -->
+        <div id="hero-home-profile-cont">
+          <!-- profile picture -->
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQHDmSPiJLdiAw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721192756128?e=2147483647&v=beta&t=bT4mLRh0tRr8IwUX2fkvFh11DDMUOrk9g_QknEroK_E"
+            alt="User Profile Pic"
+            id="hero-home-profile"
+          />
+        </div>
+        <!-- name in h1 tag -->
+        <h1 id="hero-home-main-heading">hey, I am Gaurav Sharma</h1>
+        <!-- sort discription paragraph inside a div -->
+        <div id="hero-home-disc-cont">
+          <p id="hero-main-paragraph">
+            A Python Dev and AIML enthusiast attempting to build a profession in the tech field of Artificial Intelligence and Machine Learning which will lead to my career advancement.
+          </p>
+        </div>
+        <!-- div containing button for project section -->
+        <div class="main-buttons-cont">
+          <a href="/#projects" class="main-buttons" id="main-big-button">Projects</a>
+        </div>
+      </div>
+      <!-- static left side div contains links in buttons form -->
+      <div id="hero-socials-cont">
+        <!-- social button linkedin -->
+        <div class="hero-social-icon-cont">
+          <a href="https://linkedin.com/in/aaravharithas" class="hero-social-icon-link" target="_blank">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/d8e6e1e636531e28274a1b8b6d947b817f6145bd/d42d3/assets/svg/linkedin-dark.svg"
+              alt="linkedin"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+        <!-- social button Github -->
+        <div class="hero-social-icon-cont">
+          <a href="https://github.com/aaravharithas" class="hero-social-icon-link" target="_blank">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/38469cf88d038b6ba3322c9fcb93a8f7167df4b9/cb0b9/assets/svg/github-dark.svg"
+              alt="Github"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+        <!-- social button twitter -->
+        <div class="hero-social-icon-cont">
+          <a href="https://x.com/aarvharithas" class="hero-social-icon-link" target="_blank">
+            <img
+              src="https://d33wubrfki0l68.cloudfront.net/ba3ef9fd9d500c55ba265adae6087ba71e05f5d9/d0067/assets/svg/twitter-dark.svg"
+              alt="twitter"
+              class="hero-social-icon"
+            />
+          </a>
+        </div>
+      </div>
+      <!-- scroll bar animation -->
+      <div id="hero-mouse-scroll-cont">
+        <div id="mouse"></div>
+      </div>
+    </section>
+    <!-- detailed about me with contact me button in bottom, my skills section -->
+    <section class="section-container" id="about">
+      <!-- div container which contians all its content because its easy to apply same css to all sections -->
+      <div class="main-container">
+        <!-- title and sort discription about title -->
+        <div class="sec-title-box">
+          <h2 class="title-sec-h2">
+            <span class="title-main-title">About Me</span>
+            <span class="title-main-disc">
+              Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology
+            </span>
+          </h2>
+        </div>
+        <!-- div containing about me and skill sections in div using grid which divides it into 2 columns -->
+        <div id="about-me-container">
+          <!-- column 1 contians about me  and contact button -->
+          <div id="about-me-content">
+            <!-- about me detailed title -->
+            <h3 class="about-me-content-title">Get to know me!</h3>
+            <!-- about me detailed discription -->
+            <div id="about-me-content-detail">
+              <p class="about-me-content-detail-para">
+                A <strong>Python Dev</strong> and AIML enthusiast attempting to build a profession in the tech field of Artificial Intelligence and Machine Learning which will lead to my career advancement.
+                Check out some of my work in the <strong>Projects</strong> section.
+              </p>
+              <p class="about-me-content-detail-para">
+                I also like sharing content related to the stuff that I have learned over time in Machine learning. Feel free to Connect or Follow me on my <a href="linkedin.in/aaravharithas" target="_blank">Linkedin</a> where I post useful content related to AIML and Programming.
+              </p>
+              <p class="about-me-content-detail-para">
+                I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to <strong>contact</strong> me.
+              </p>
+            </div>
+            <a href="/#contact" class="main-buttons">Contact</a>
+          </div>
+          <!-- column 2 contianing skills in flex form tiles -->
+          <div id="about-me-skills-container">
+            <h3 class="about-me-content-title">My Skills</h3>
+            <!-- skill tiles containing skills and their image -->
+            <div id="about-me-skills">
+              <!-- skill 1 -->
+              <div class="skills-skill">
+                <img
+                  src="https://www.svgrepo.com/show/452091/python.svg"
+                  alt="Python logo"
+                />Python
+              </div>
+              <!-- skill 2 -->
+              <div class="skills-skill">
+                <img
+                  src="https://www.svgrepo.com/show/339328/machine-learning-01.svg"
+                  alt="machine learning logo"
+                />Machine Learning
+              </div>
+              <!-- skill 3 -->
+              <div class="skills-skill">
+                <img
+                  src="https://www.svgrepo.com/show/190371/analytics-data-analytics.svg"
+                  alt="data analytics logo"
+                />Data Analytics
+              </div>
+              <!-- skill 4 -->
+              <div class="skills-skill">
+                <img src="https://www.r-project.org/Rlogo.png" alt="R logo" />R
+                Programming
+              </div>
+              <!-- skill 6 -->
+              <div class="skills-skill">
+                <img src="https://cdn.iconscout.com/icon/free/png-512/free-tableau-5376637-4489897.png?f=webp&w=256" alt="Tableau" />Tableau
+              </div>
+              <div class="skills-skill">
+                <img
+                  src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/power-bi-icon.png"
+                  alt="Power BI"
+                />Power BI
+              </div>
+              <div class="skills-skill">
+                <img
+                  src="https://cdn.iconscout.com/icon/free/png-512/free-mysql-3521596-2945040.png?f=webp&w=256"
+                  alt="MySQL"
+                  />MySQL
+                </div>
+                <div class="skills-skill">
+                  <img
+                    src="https://cdn.iconscout.com/icon/free/png-512/free-microsoft-excel-1411847-1194336.png?f=webp&w=256"
+                    alt="Excel logo"
+                  />Microsoft Excel
+                </div>
+              <!-- skill 5 -->
+              <div class="skills-skill">
+                <img
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/ubuntu-2752042-2284859.png?f=webp&w=256"
+                  alt="Ubuntu"
+                  />Ubuntu
+                </div>
+                <!-- skill 7 -->
+                <div class="skills-skill">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/180px-ISO_C%2B%2B_Logo.svg.png" alt="C C++" />C/C++
+              </div>
+              <div class="skills-skill">
+                <img
+                  src="https://banner2.cleanpng.com/20180320/jbq/av0pvn3i2.webp"
+                  alt="UNIX/Linux Terminal"
+                />UNIX/Linux Terminal
+              </div>
+              <div class="skills-skill">
+                <img
+                  src="https://w7.pngwing.com/pngs/159/366/png-transparent-django-python-computer-icons-logo-python-text-label-rectangle-thumbnail.png"
+                  alt="Django"
+                />Django
+              </div>
+              <div class="skills-skill">
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeI1ZWj11yZe3XM8WvaeJMBQjkc9c_LV-otA&s"
+                alt="Web dev"
+                />HTML5 CSS3
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- project seciton with pagination at the buttom section -->
+    <section class="section-container" id="projects">
+      <!-- div contains all content of this secion in flex form of projects -->
+      <div class="main-container">
+        <!-- first section contains small disctions same as about me -->
+        <div class="sec-title-box">
+          <h2 class="title-sec-h2">
+            <span class="title-main-title">Projects</span>
+            <span class="title-main-disc">
+              Here you will find some of the personal projects that I created
+              with each project containing its own case study
+            </span>
+          </h2>
+        </div>
+        <!-- div contains project tiles in flex form divs and pagination buttons -->
+        {% block content %}
+
+        {% endblock %}        
+        <!-- project card divs ends here -->
+      </div>
+    </section>
+    <!-- contact me seciton -->
+    <section class="section-container" id="contact">
+      <div class="main-container">
+        <!-- first section contains small discriptions same as about me -->
+        <div class="sec-title-box">
+          <h2 class="title-sec-h2">
+            <span class="title-main-title">Contact</span>
+            <span class="title-main-disc">
+              Feel free to contact me on these details
+            </span>
+          </h2>
+        </div>
+        <!-- contact form -->
+        <div class="contact-form-cont">
+          <div class="contact-form-label">Phone Number</div>
+          <div class="contact-form-value">+91 9321-666-720</div>
+          <div class="contact-form-label">Email ID</div>
+          <div class="contact-form-value">aaravharithas@gmail.com</div>
+        </div>
+      </div>
+    </section>
+    <!-- footer with sort about me(same as above in seciton 1) and socail media links -->
+    <footer id="main-footer">
+      <!-- main container -->
+      <div class="main-container">
+        <!-- div container in two secitons 1st contains main content in two sections: left data, right links -->
+        <div id="footer-upper">
+          <!-- left data section -->
+          <div class="footer-upper-row" id="footer-upper-row-1">
+            <h2 class="footer-title-sec">Gaurav Sharma</h2>
+            <p id="footer-upper-sort-disc">
+              A Python Dev and AIML enthusiast attempting to build a profession in the tech field of Artificial Intelligence and Machine Learning which will lead to my career advancement.
+            </p>
+          </div>
+          <!-- right link section -->
+          <div class="footer-upper-row" id="footer-upper-row-2">
+            <!-- heading for socail buttons -->
+            <h2 class="footer-title-sec" id="footer-upper-social-h2">
+              <span>Social</span>
+            </h2>
+            <!-- social icons -->
+            <div id="footer-upper-social-cont">
+              <!-- linkedin -->
+              <a href="https://linkedin.com/in/aaravharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png"
+                  alt="linkedin"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+              <!-- github -->
+              <a href="https://github.com/aaravharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png"
+                  alt="Github"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+              <!-- twitter -->
+              <a href="https://x.com/aarvharithas" target="_blank">
+                <img
+                  src="https://d33wubrfki0l68.cloudfront.net/ef67339f7016cb09ba66366c1dc9145ac69f2a21/feca1/assets/png/twitter-ico.png"
+                  alt="Twitter"
+                  class="footer-upper-social-icon"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- 2nd contains data like shoutout or website since this time to that time -->
+        <div id="footer-lower">
+          &copy; Copyright
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          . Made by <strong>Gaurav Sharma</strong>
+        </div>
+      </div>
+    </footer>
+    <!-- scripts for JS -->
+    <script src="{% static 'index.js'%}"></script>
+    <!-- scripts for theme change -->
+    <script>
+      function darkmode(){
+        var SetTheme = document.body;
+        SetTheme.classList.toggle("theme-change");
+        
+        let theme;
+        
+        if(SetTheme.classList.contains("theme-change")){
+          console.log("Dark Mode");
+          theme = "DARK";
+          logoicon.src = "{% static 'images/light.png' %}";
+        }else{
+          console.log("Light Mode");
+          theme = "LIGHT";
+          logoicon.src = "{% static 'images/dark.png' %}";
+        }
+
+        localStorage.setItem("PageTheme", JSON.stringify(theme));
+      }
+      
+      
+      let GetTheme = JSON.parse(localStorage.getItem("PageTheme"));
+      console.log(GetTheme);
+
+      if(GetTheme === "DARK"){
+        document.body.classList = "theme-change";
+        logoicon.src = "{% static 'images/light.png' %}";
+      }
+    </script>
+  </body>
+</html>

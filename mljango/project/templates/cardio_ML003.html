@@ -1,0 +1,365 @@
+{% extends 'project_base.html' %} {% block content %}
+<div class="contact-form-cont project-form-cont">
+  <form action="" id="form-child" method="post">
+    {% csrf_token %}
+    <!-- Number input field -->
+    <!-- use onpoint in number input field if you gonna use slider to connect their values -->
+    <div id="all-input-container">
+      <!-- age number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label">Age</label>
+          <input
+            type="number"
+            class="project-form-input"
+            name="age"
+            value="18"
+            min="5"
+            max="105"
+            oninput="this.form.age_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <!-- name could be anything because we only gonna use input number field name -->
+        <!-- onpoint is used for show value of slider into input number field -->
+        <!-- which is: onpoint="this.form.number_input_name.value = this.value" -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="5"
+            max="105"
+            name="age_range"
+            value="18"
+            oninput="this.form.age.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- height number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Height in cm</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="height"
+            min="120"
+            max="220"
+            step="0.1"
+            value="170"
+            oninput="this.form.height_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <!-- name could be anything because we only gonna use input number field name -->
+        <!-- onpoint is used for show value of slider into input number field -->
+        <!-- which is: onpoint="this.form.number_input_name.value = this.value" -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            min="120"
+            max="220"
+            step="0.1"
+            name="height_range"
+            value="170"
+            oninput="this.form.height.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- weight number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Weight in KG</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="weight"
+            step="0.1"
+            value="60"
+            min="20"
+            max="150"
+            oninput="this.form.weight_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <!-- name could be anything because we only gonna use input number field name -->
+        <!-- onpoint is used for show value of slider into input number field -->
+        <!-- which is: onpoint="this.form.number_input_name.value = this.value" -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            step="0.1"
+            value="60"
+            min="20"
+            max="150"
+            name="weight_range"
+            oninput="this.form.weight.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- gender radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Select Gender
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="gender" value="2" checked /> Male
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="gender" value="1" /> Female
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+      <!-- systolic blood pressure number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Systolic blood pressure</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="systole_hi"
+            value="120"
+            min="80"
+            max="200"
+            oninput="this.form.systole_hi_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <!-- name could be anything because we only gonna use input number field name -->
+        <!-- onpoint is used for show value of slider into input number field -->
+        <!-- which is: onpoint="this.form.number_input_name.value = this.value" -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            value="120"
+            min="80"
+            max="200"
+            name="first_value_range"
+            oninput="this.form.systole_hi.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+      <!-- Diastolic blood pressure number input field with range -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Diastolic blood pressure</label
+          >
+          <input
+            type="number"
+            class="project-form-input"
+            name="diastole_lo"
+            value="80"
+            min="60"
+            max="150"
+            oninput="this.form.first_value_range.value = this.value"
+            required
+          />
+        </div>
+        <!-- range field slider -->
+        <!-- name could be anything because we only gonna use input number field name -->
+        <!-- onpoint is used for show value of slider into input number field -->
+        <!-- which is: onpoint="this.form.number_input_name.value = this.value" -->
+        <div class="project-form-field">
+          <input
+            type="range"
+            value="80"
+            min="60"
+            max="150"
+            name="diastole_lo_range"
+            oninput="this.form.diastole_lo.value = this.value"
+          />
+        </div>
+        <!-- range slider end -->
+      </div>
+
+      <!-- Cholestrol radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Cholestrol Level
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="cholesterol" value="1" checked /> Noraml
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="cholesterol" value="2" /> Above Normal
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="cholesterol" value="3" /> Well Above
+            Normal
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+      <!-- glucose radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Glucose Level
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="gluc" value="1" checked /> Normal
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="gluc" value="2" /> Above Normal
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="gluc" value="3" /> Well Above Normal
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+      <!-- smoking radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Smoker
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="smoke" value="0" checked /> No
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="smoke" value="1" /> Yes
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+      <!-- alcohole radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Alcoholic
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="alco" value="0" checked /> No
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="alco" value="1" /> Yes
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+      <!-- physical activity radio buttons -->
+      <div class="input-field-container">
+        <!-- container is used for setting margin and padding between div blocks -->
+        <div class="project-form-field radio-button-cont">
+          <legend
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            Physical Active
+          </legend>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="active" value="0" checked /> No
+          </label>
+          <label
+            for="project-name"
+            class="contact-form-label radio-button-label"
+          >
+            <input type="radio" name="active" value="1" /> Yes
+          </label>
+        </div>
+      </div>
+      <!-- radio button end -->
+    </div>
+    <!-- all-input-container -->
+
+    <!-- submit button -->
+    <div class="main-buttons-cont" id="project-form-submit">
+      <input class="main-buttons project-form-button" type="submit" />
+      <input class="main-buttons project-form-button" type="reset" />
+    </div>
+    <!-- submit button end -->
+  </form>
+
+  <!-- result -->
+  {% if messages %}
+  <div id="project-form-result">
+    <div class="contact-form-label">Result</div>
+    <div class="contact-form-value" id="form-result-message">
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <!-- result end -->
+  </div>
+</div>
+{% endblock %}

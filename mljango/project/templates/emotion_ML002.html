@@ -1,0 +1,46 @@
+{% extends 'project_base.html' %} {% block content %}
+<div class="contact-form-cont project-form-cont">
+  <form action="" id="form-child" method="post">
+    {% csrf_token %}
+
+    <!-- Number input field -->
+    <!-- use onpoint in number input field if you gonna use slider to connect their values -->
+    <div id="all-input-container">
+      <!-- text area input field -->
+      <div class="input-field-container">
+        <div class="project-form-field">
+          <label for="project-name" class="contact-form-label"
+            >Enter text</label
+          >
+          <textarea class="project-form-input" rows="4" cols="50" name="emotion_text"></textarea>
+        </div>
+        <!-- text area end -->
+      </div>
+      <!-- text-area field end -->
+    </div>
+    <!-- all-input-container end -->
+
+    <!-- submit button -->
+    <div class="main-buttons-cont" id="project-form-submit">
+      <input class="main-buttons project-form-button" type="submit" />
+      <input class="main-buttons project-form-button" type="reset" />
+    </div>
+    <!-- submit button end -->
+  </form>
+
+  <!-- result -->
+  {% if messages %}
+  <div id="project-form-result">
+    <div class="contact-form-label">Result</div>
+    <div class="contact-form-value" id="form-result-message">
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <!-- result end -->
+  </div>
+</div>
+{% endblock %}
